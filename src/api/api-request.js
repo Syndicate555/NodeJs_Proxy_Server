@@ -4,12 +4,11 @@ const { default: Axios } = require("axios");
 const router = express.Router();
 const BASE_URL = `http://newsapi.org/v2/everything?`;
 const BASE_URL2 = `http://newsapi.org/v2/everything?domains=wsj.com&apiKey=2e209d65084a4475920191f033f023ce`;
-require("dotenv").config();
 
 router.get("/", async (req, res) => {
   try {
     const params = new URLSearchParams({
-      api_key: process.env.API_KEY,
+      apiKey: process.env.API_KEY,
       domains: "wsj.com",
     });
 
