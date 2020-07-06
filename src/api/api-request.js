@@ -1,6 +1,7 @@
 const express = require("express");
 const { default: Axios } = require("axios");
 const rateLimit = require("express-rate-limit");
+const slowDown = require("express-slow-down");
 const router = express.Router();
 const BASE_URL = `http://newsapi.org/v2/everything?`;
 let cachedData;
