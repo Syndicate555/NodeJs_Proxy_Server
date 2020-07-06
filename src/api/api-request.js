@@ -5,11 +5,13 @@ const router = express.Router();
 const BASE_URL = `http://newsapi.org/v2/everything?`;
 let cachedData;
 let cachedTime;
+
+// Define your API restrictions here
 const limiter = rateLimit({
-  windowsMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to all requests per windowsMs
+  windowsMs: 30 * 1000, // 15 minutes
+  max: 2, // limit each IP to all requests per windowsMs
 });
-router.get("/", async (req, res) => {
+router.get("/", limiter, async (req, res) => {
   // in memory cache
   if (cachedTime && cachedTime > Date.now() - 30 * 1000) {
     return res.json(cachedData);
