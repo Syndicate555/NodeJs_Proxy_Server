@@ -3,6 +3,7 @@ const { default: Axios } = require("axios");
 
 const router = express.Router();
 const BASE_URL = `http://newsapi.org/v2/everything?`;
+const cachedData;
 
 router.get("/", async (req, res) => {
   try {
