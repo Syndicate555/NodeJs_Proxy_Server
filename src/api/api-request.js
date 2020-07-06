@@ -5,7 +5,10 @@ const router = express.Router();
 const BASE_URL = `http://newsapi.org/v2/everything?`;
 let cachedData;
 let cachedTime;
-
+const limiter = rateLimit({
+  windowsMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to all requests per windowsMs
+});
 router.get("/", async (req, res) => {
   // in memory cache
   if (cachedTime && cachedTime > Date.now() - 30 * 1000) {

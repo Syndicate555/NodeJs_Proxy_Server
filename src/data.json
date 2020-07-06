@@ -4,6 +4,11 @@
   "articles": [
     {
       "source": {
+        "name": "Sample data created for the API"
+      }
+    },
+    {
+      "source": {
         "id": "the-wall-street-journal",
         "name": "The Wall Street Journal"
       },
