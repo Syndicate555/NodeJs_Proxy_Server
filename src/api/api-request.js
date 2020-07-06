@@ -31,6 +31,8 @@ router.get(
     const apiKey = req.get("X-API-KEY");
     if (apiKeys.has(apiKey)) {
       next();
+    } else {
+      const error = new Error("Invalid API KEY");
     }
   },
   async (req, res) => {
