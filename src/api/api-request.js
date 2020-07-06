@@ -27,7 +27,12 @@ router.get(
   "/",
   limiter,
   speedLimiter,
-  (req, res, next) => {},
+  (req, res, next) => {
+    const apiKey = req.get("X-API-KEY");
+    if (apiKeys.has(apiKey)) {
+      next();
+    }
+  },
   async (req, res) => {
     // in memory cache
     if (cachedTime && cachedTime > Date.now() - 30 * 1000) {
