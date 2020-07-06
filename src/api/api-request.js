@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const BASE_URL = `http://newsapi.org/v2/everything?domains=wsj.com&apiKey=2e209d65084a4475920191f033f023ce`;
+const BASE_URL = `http://newsapi.org/v2/everything?domains=wsj.com&apiKey=API_KEY`;
 
 router.get("/", (req, res) => {
   console.log("connected");
