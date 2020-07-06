@@ -7,6 +7,9 @@ let cachedData;
 let cachedTime;
 
 router.get("/", async (req, res) => {
+  if (cachedTime && cachedTime > Date.now() - 30 * 1000) {
+    res.json(cachedData);
+  }
   try {
     const params = new URLSearchParams({
       apiKey: process.env.API_KEY,
