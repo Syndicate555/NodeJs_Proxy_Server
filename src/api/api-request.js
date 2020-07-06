@@ -9,7 +9,7 @@ let cachedTime;
 router.get("/", async (req, res) => {
   // in memory cache
   if (cachedTime && cachedTime > Date.now() - 30 * 1000) {
-    res.json(cachedData);
+    return res.json(cachedData);
   }
   try {
     const params = new URLSearchParams({
@@ -23,8 +23,9 @@ router.get("/", async (req, res) => {
     // 2. respond to ths request with data from api
 
     cachedTime = Date.now();
-    cachedData = data;
 
+    cachedData = data;
+    data.cacheTime = cachedTime;
     return res.json(data);
   } catch (error) {
     console.log(error);
