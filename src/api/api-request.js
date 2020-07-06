@@ -3,8 +3,9 @@ const { default: Axios } = require("axios");
 
 const router = express.Router();
 const BASE_URL = `http://newsapi.org/v2/everything?`;
+const BASE_URL2 = `http://newsapi.org/v2/everything?domains=wsj.com&apiKey=2e209d65084a4475920191f033f023ce`;
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const params = new URLSearchParams({
       api_key: process.env.API_KEY,
@@ -12,11 +13,11 @@ router.get("/", (req, res) => {
     });
 
     // 1. make a request to the api
-    const { data } = await axios.get(`${BASE_URL}${params}`);
+    const { data } = await Axios.get(`${BASE_URL}${params}`);
 
     res.json(data);
   } catch (error) {
-    next(error);
+    console.log(error);
   }
 });
 
