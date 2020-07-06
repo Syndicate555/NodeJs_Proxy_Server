@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
-
+const data = require("./data.json");
 require("dotenv").config();
 
 const middlewares = require("./middlewares");
@@ -21,6 +21,9 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/data", (req, res) => {
+  res.send(data);
+});
 app.use("/api/v1", api);
 
 app.use(middlewares.notFound);
