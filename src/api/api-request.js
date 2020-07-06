@@ -10,8 +10,15 @@ let cachedTime;
 // Define your API restrictions here
 const limiter = rateLimit({
   windowsMs: 30 * 1000, // 15 minutes
-  max: 2, // limit each IP to all requests per windowsMs
+  max: 10, // limit each IP to all requests per windowsMs
 });
+
+const speedLimiter = slowDown({
+  windowMs: 30 * 1000,
+  delayAfter: 1,
+  delayMs: 500,
+});
+
 router.get("/", limiter, async (req, res) => {
   // in memory cache
   if (cachedTime && cachedTime > Date.now() - 30 * 1000) {
