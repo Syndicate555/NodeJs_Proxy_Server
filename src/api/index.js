@@ -12,5 +12,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/emojis", emojis);
+router.use("/api", apiRequest);
 
 module.exports = router;
