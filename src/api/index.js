@@ -1,7 +1,7 @@
 const express = require("express");
 
 const emojis = require("./emojis");
-const apiRequest = require("./api-request");
+const marsWeather = require("./mars-weather");
 
 const router = express.Router();
 
@@ -12,6 +12,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/emojis", emojis);
-router.use("/api", apiRequest);
+router.use("/mars-weather", marsWeather);
 
 module.exports = router;
