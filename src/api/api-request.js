@@ -12,7 +12,9 @@ router.get("/", (req, res) => {
     res.json({
       message: "Hello from the api",
     });
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
