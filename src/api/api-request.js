@@ -7,6 +7,7 @@ let cachedData;
 let cachedTime;
 
 router.get("/", async (req, res) => {
+  // in memory cache
   if (cachedTime && cachedTime > Date.now() - 30 * 1000) {
     res.json(cachedData);
   }
@@ -19,7 +20,12 @@ router.get("/", async (req, res) => {
     // 1. make a request to the api
     const { data } = await Axios.get(`${BASE_URL}${params}`);
 
-    res.json(data);
+    // 2. respond to ths request with data from api
+
+    cachedTime = Date.now();
+    cachedData = data;
+
+    return res.json(data);
   } catch (error) {
     console.log(error);
   }
