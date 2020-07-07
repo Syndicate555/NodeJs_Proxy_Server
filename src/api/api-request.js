@@ -13,7 +13,7 @@ apiKeys.set("12345", true);
 
 // Define your API restrictions here
 const limiter = rateLimit({
-  windowsMs: 30 * 1000, // 15 minutes
+  windowsMs: 30 * 1000, // 3 minutes
   max: 10, // limit each IP to all requests per windowsMs
 });
 
