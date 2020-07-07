@@ -49,7 +49,7 @@ router.get(
       // 1. make a request to the api
       const { data } = await Axios.get(`${BASE_URL}${params}`);
 
-      // 2. respond to ths request with data from api
+      // 2. respond to the request with data from api
 
       cachedTime = Date.now();
 
