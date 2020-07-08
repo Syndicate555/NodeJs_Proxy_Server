@@ -33,6 +33,7 @@ router.get(
       next();
     } else {
       const error = new Error("Invalid API KEY");
+      newt(error);
     }
   },
   async (req, res) => {
